@@ -1,0 +1,24 @@
+.mynavclass {
+    display: flex;
+    padding-left: 2%;
+    border-bottom: 3px solid darkslategray;
+    font-family: monospace;
+    background-color: aliceblue;
+}
+.navbar-brand {
+    font-size: 180%;
+    color: darkslategray
+}
+#logo {
+    vertical-align: bottom;
+}
+.patients-btn {
+ position: relative;
+ left: 50%;
+}
+.patients-btn:hover {
+    color: black
+} 
+.nav-item {
+    margin-right: 7%;
+}
