@@ -1,3 +1,17 @@
-<p>main-page works!</p>
+<div *ngFor="let patient of patients">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{patient.lastName}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{patient.firstName}}</h6>
+            <p class="card-text">Email: {{patient.email}}</p>
+            <button class="btn btn-primary">View Details</button>
+            <button class="btn btn-danger">Delete Patient</button>
+        </div>
+    </div>
+</div>
 
-{{ patients }}
+<hr>
+<h1>TITLE</h1>
+<div *ngFor="let patient of (patients$|async)">
+    {{patient}}
+</div>

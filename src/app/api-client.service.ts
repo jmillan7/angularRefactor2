@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { Data } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Patients } from './models/patient.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,18 @@ import { map } from 'rxjs/operators';
 export class ApiClientService {
 
   constructor(private http: HttpClient) { }
+  
 
-  getPatients() {
-    return this.perform('get','/patients');
+  getPatients(): Observable<Patients[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:4200'
+      })
+    };
+    const patients = this.http.get<Patients[]>('http://localhost:8000/patients', httpOptions);
+    return patients;
   }
 
   async perform(method: string, resource: string, data: Data = {}) {
@@ -20,20 +30,16 @@ export class ApiClientService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:4200'
       })
     };
     switch (method) {
-      case 'delete':
-        return lastValueFrom(this.http.delete(url, httpOptions));
       case 'get': 
-        return this.http.get(url, httpOptions).pipe(map(res => {
-          return res
+        return this.http.get<Patients>(url, httpOptions).pipe(map((data: {})=> {
+          console.log(data)
+          return 
         }))
-      case 'put':
-        return lastValueFrom(this.http.put(url, data, httpOptions));
-      case 'post':  
-        return lastValueFrom(this.http.post(url, data, httpOptions));
       default: return {'N/A': 'na'};
     }
   }

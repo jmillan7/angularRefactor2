@@ -1,24 +1,26 @@
 .mynavclass {
-    display: flex;
-    padding-left: 2%;
-    border-bottom: 3px solid darkslategray;
+    border-bottom: 1px solid darkslategray;
     font-family: monospace;
     background-color: aliceblue;
 }
+.btn-container {
+    background-color: aliceblue;
+    justify-content: flex-start;
+    
+
+
+}
+.btn {
+    background-color: aliceblue;
+}
+.btn:hover {
+    background-color: rgb(239, 240, 241);
+
+}
 .navbar-brand {
-    font-size: 180%;
-    color: darkslategray
-}
-#logo {
-    vertical-align: bottom;
-}
-.patients-btn {
- position: relative;
- left: 50%;
+    padding-left: 2%;
+    color: darkslategray;
 }
 .patients-btn:hover {
     color: black
 } 
-.nav-item {
-    margin-right: 7%;
-}
